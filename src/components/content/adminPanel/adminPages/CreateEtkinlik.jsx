@@ -1,7 +1,7 @@
-import { Box, MenuItem, TextField } from '@mui/material'
+import { Box, Button, MenuItem, TextField } from '@mui/material'
 import { DatePicker, DateTimeField, LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const etkinlikType = [
     {
@@ -22,6 +22,8 @@ const etkinlikType = [
     },
 ];
 
+
+
 function CreateEtkinlik() {
     const [value, setValue] = React.useState();
 
@@ -38,40 +40,58 @@ function CreateEtkinlik() {
                 noValidate
                 autoComplete="off"
             >
-                <div>
-                    <TextField id="outlined-basic" label="Konum" variant="outlined" size='small' />
-                    <TextField id="outlined-basic" label="Adres" variant="outlined" size='small' />
-                    <TextField id="outlined-basic" label="Açıklama" variant="outlined" size='small' />
-                    <TextField
-                        id="outlined-select-etkinlikType"
-                        select
-                        label="Etkinlik Türü"
-                        defaultValue="Konser"
-                        size='small'
-                    >
-                        {etkinlikType.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DateTimeField
-                            label="Format without meridiem"
-                            value={value}
-                            onChange={(newValue) => setValue(newValue)}
-                            format="L HH:mm"
-                        />
-                        <DatePicker label="Başlangıç Tarihi" slotProps={{ textField: { size: 'small' } }} />
-                        <DatePicker label="Bitiş Tarihi" slotProps={{ textField: { size: 'small' } }} />
-                        <TimePicker views={['hours', 'minutes']} format="HH:mm" />
-
-                    </LocalizationProvider>
-                    <TextField id="outlined-basic" label="Etkinlik Türü" variant="outlined" size='small' />
+                <TextField id="outlined-basic" label="Konum" variant="outlined" size='small' />
+                <TextField id="outlined-basic" label="Adres" variant="outlined" size='small' />
+                <TextField
+                    id="fullWidth"
+                    label="Açıklama"
+                    style={{ width: 500 }}
+                    multiline
+                    rows={4}
+                    defaultValue=""
+                />
+                <TextField
+                    id="outlined-select-etkinlikType"
+                    select
+                    label="Etkinlik Türü"
+                    defaultValue="Konser"
+                    size='small'
+                >
+                    {etkinlikType.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DateTimeField
+                        label="Başlangıç Tarihi - Saati"
+                        value={value}
+                        onChange={(newValue) => setValue(newValue)}
+                        format="L HH:mm"
+                        slotProps={{ textField: { size: 'small' } }}
+                    />
+                    <DateTimeField
+                        label="Bitiş Tarihi - Saati"
+                        value={value}
+                        onChange={(newValue) => setValue(newValue)}
+                        format="L HH:mm"
+                        slotProps={{ textField: { size: 'small' } }}
+                    />
+                </LocalizationProvider>
+                <TextField id="outlined-basic" label="Etkinlik Türü" variant="outlined" size='small' />
+                <div >
+                    <TextField id="kategori-1" label="Kategori-1" variant="outlined" size='small' />
+                    <TextField id="kategori-2" label="Kategori-2" variant="outlined" size='small' />
+                    <TextField id="kategori-3" label="Kategori-3" variant="outlined" size='small' />
+                    <TextField id="kategori-4" label="Kategori-4" variant="outlined" size='small' />
+                    <TextField id="kategori-5" label="Kategori-5" variant="outlined" size='small' />
                 </div>
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small' />
-            </Box>
-        </div>
+
+
+
+            </Box >
+        </div >
     </>)
 }
 
