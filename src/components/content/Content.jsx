@@ -1,9 +1,17 @@
 import React from 'react'
 import MainPage from './webEtkinlik/MainPage'
+import { Route, Routes } from 'react-router'
+import AdminPanel from './adminPanel/AdminPanel'
 
 function Content() {
   return (<>
-    <MainPage />
+
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/admin/*" element={<AdminPanel />} />
+
+    </Routes>
+
 
   </>)
 }
