@@ -3,23 +3,6 @@ import axios from 'axios';
 import './card.css';
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 
-// function Content(props) {
-//     return (
-//       <div className='card'>
-//         <div className='cardBody'>
-//             <img src= {props.img} />
-//             <div className="abuot">
-//                 <h2 className='cardTitle'>{props.title}</h2>
-//                 <p className='cardDescription'>{props. description}</p>
-//             </div>
-//             <button>Detayları görüntüle</button>
-//         </div>
-//       </div>
-//     )
-// }
-
-// export default Content
-
 function ShowEtkinlik() {
     const [events, setEvents] = useState([]);
 
@@ -34,73 +17,64 @@ function ShowEtkinlik() {
     }, []);
 
     return (
-        <div>
-            <h1>Etkinlik Listesi</h1>
-            <ul>
+        <div style={{ backgroundColor: '#F2F2F2', padding: '20px' }}>
+            <h1 style={{ color: '#336699' }}>Etkinlik Listesi</h1>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {events.map(event => (
-                    <li key={event.id}>
-                        <h2>{event.aciklama}</h2>
-                        <p>Konum: {event.konumAdi}</p>
-                        <p>Adres: {event.adres}</p>
-                        <p>Tür: {event.etkinlikType}</p>
-                        <p>Başlangıç: {event.etkinlikBaslangic}</p>
-                        <p>Bitiş: {event.etkinlikBitis}</p>
-                        <h3>Ücretler:</h3>
-                        <ul>
-                            {event.etkinlikUcretleri.map(ucret => (
-                                <li key={ucret.id}>{ucret.kategoriType}: {ucret.fiyat} TL</li>
-                            ))}
-                        </ul>
-                        <h3>Resimler:</h3>
-                        <ul>
-                            {event.etkinlikResimleri.map(resim => (
-                                <li key={resim.id}>{resim.resimAd}</li>
-                            ))}
-                        </ul>
-                    </li>
-                ))}
-            </ul>
-
-
-
-
-            <div style={{ display: 'flex' }}>
-                {events.map(event => (
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardActionArea>
-                            <CardMedia
-                                sx={{ height: 140 }}
-                                image="/static/images/cards/contemplative-reptile.jpg"
-                                title="green iguana"
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    Lizard
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                                    species, ranging across all continents except Antarctica
-                                </Typography>
-                                <Typography variant="h6" color="text.secondary">
-                                    sinema
-                                </Typography>
-
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small">Share</Button>
-                                <Button size="small">Learn More</Button>
-                            </CardActions>
-                        </CardActionArea>
-
-                    </Card>
+                    <div key={event.id} style={{ width: '300px', margin: '16px' }}>
+                        <Card style={{ border: '2px solid #ccc', backgroundColor: 'white' }}>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="200"
+                                    image={event.gorselUrl}
+                                    title={event.aciklama}
+                                />
+                                <CardContent>
+                                    <Typography variant="h6" gutterBottom>
+                                        {event.aciklama}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                        Konum: {event.konumAdi}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                        Adres: {event.adres}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                        Tür: {event.etkinlikType}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                        Başlangıç: {event.etkinlikBaslangic}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                        Bitiş: {event.etkinlikBitis}
+                                    </Typography>
+                                    <Typography variant="body2">
+                                        <strong>Ücretler:</strong>
+                                    </Typography>
+                                    <ul>
+                                        {event.etkinlikUcretleri.map(ucret => (
+                                            <li key={ucret.id}>{ucret.kategoriType}: {ucret.fiyat} TL</li>
+                                        ))}
+                                    </ul>
+                                    <Typography variant="body2">
+                                        <strong>Resimler:</strong>
+                                    </Typography>
+                                    <ul>
+                                        {event.etkinlikResimleri.map(resim => (
+                                            <li key={resim.id}>{resim.resimAd}</li>
+                                        ))}
+                                    </ul>
+                                </CardContent>
+                            </CardActionArea>
+                            <CardActionArea>
+                                <Button size="small" style={{ backgroundColor: '#336699', color: 'white' }}>Share</Button>
+                                <Button size="small" style={{ backgroundColor: '#FF5733', color: 'white' }}>Learn More</Button>
+                            </CardActionArea>
+                        </Card>
+                    </div>
                 ))}
             </div>
-
-
-
-
-
-
         </div>
     );
 }
