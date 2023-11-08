@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './card.css';
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 
 // function Content(props) {
 //     return (
@@ -59,6 +60,47 @@ function ShowEtkinlik() {
                     </li>
                 ))}
             </ul>
+
+
+
+
+            <div style={{ display: 'flex' }}>
+                {events.map(event => (
+                    <Card sx={{ maxWidth: 345 }}>
+                        <CardActionArea>
+                            <CardMedia
+                                sx={{ height: 140 }}
+                                image="/static/images/cards/contemplative-reptile.jpg"
+                                title="green iguana"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Lizard
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Lizards are a widespread group of squamate reptiles, with over 6,000
+                                    species, ranging across all continents except Antarctica
+                                </Typography>
+                                <Typography variant="h6" color="text.secondary">
+                                    sinema
+                                </Typography>
+
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">Share</Button>
+                                <Button size="small">Learn More</Button>
+                            </CardActions>
+                        </CardActionArea>
+
+                    </Card>
+                ))}
+            </div>
+
+
+
+
+
+
         </div>
     );
 }
