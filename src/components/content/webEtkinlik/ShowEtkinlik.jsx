@@ -16,19 +16,26 @@ function ShowEtkinlik() {
             });
     }, []);
 
-    return (
+    return (<>
+
         <div style={{ backgroundColor: '#F2F2F2', padding: '20px' }}>
-            <h1 style={{ color: '#336699' }}>Etkinlik Listesi</h1>
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
+                <h1 style={{ color: '#336699' }}>Etkinlik Listesi</h1>
+                <h1>Filter</h1>
+            </div>
+            <hr />
+
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
                 {events.map(event => (
                     <div key={event.id} style={{ width: '300px', margin: '16px' }}>
-                        <Card style={{ border: '2px solid #ccc', backgroundColor: 'white' }}>
+                        <Card style={{ backgroundColor: 'white' }}>
                             <CardActionArea>
                                 <CardMedia
                                     component="img"
                                     height="200"
                                     image={event.gorselUrl}
                                     title={event.aciklama}
+                                    style={{ borderRadius: "4%" }}
                                 />
                                 <CardContent>
                                     <Typography variant="h6" gutterBottom>
@@ -49,11 +56,12 @@ function ShowEtkinlik() {
                                     <Typography variant="body2" color="textSecondary">
                                         Bitiş: {event.etkinlikBitis}
                                     </Typography>
-                                    <Typography variant="body2">
+                                    {/* <Typography variant="body2">
                                         <strong>Ücretler:</strong>
                                     </Typography>
                                     <ul>
                                         {event.etkinlikUcretleri.map(ucret => (
+
                                             <li key={ucret.id}>{ucret.kategoriType}: {ucret.fiyat} TL</li>
                                         ))}
                                     </ul>
@@ -64,18 +72,19 @@ function ShowEtkinlik() {
                                         {event.etkinlikResimleri.map(resim => (
                                             <li key={resim.id}>{resim.resimAd}</li>
                                         ))}
-                                    </ul>
+                                    </ul> */}
                                 </CardContent>
                             </CardActionArea>
-                            <CardActionArea>
-                                <Button size="small" style={{ backgroundColor: '#336699', color: 'white' }}>Share</Button>
-                                <Button size="small" style={{ backgroundColor: '#FF5733', color: 'white' }}>Learn More</Button>
+                            <CardActionArea style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <Button size="small" style={{ backgroundColor: '#F2F2F2' }}>Paylaş</Button>
+                                <Button size="small" style={{ backgroundColor: '#F2F2F2' }}>Detay</Button>
                             </CardActionArea>
                         </Card>
                     </div>
                 ))}
             </div>
         </div>
+    </>
     );
 }
 
