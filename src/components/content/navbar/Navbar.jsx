@@ -3,7 +3,7 @@ import React from 'react'
 function Navbar() {
     return (<>
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light" >
+            <nav className="navbar navbar-expand-lg navbar-light " style={{ backgroundColor: '#F2F2F2' }} >
                 <a className="navbar-brand" href="#" style={{ paddingLeft: '2%' }}>
                     Navbar
                 </a>
