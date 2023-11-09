@@ -1,97 +1,179 @@
 import { Box, Button, MenuItem, TextField } from '@mui/material'
 import { DatePicker, DateTimeField, LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import axios from 'axios';
+import { useFormik } from 'formik';
 import React, { Fragment } from 'react'
-
-const etkinlikType = [
-    {
-        value: 'KONSER',
-        label: 'Konser',
-    },
-    {
-        value: 'SINEMA',
-        label: 'Sinema',
-    },
-    {
-        value: 'TIYATRO',
-        label: 'Tiyatro',
-    },
-    {
-        value: 'SEMINER',
-        label: 'Seminer',
-    },
-];
-
 
 
 function CreateEtkinlik() {
-    const [value, setValue] = React.useState();
 
+    const etkinlikType = [
+        {
+            value: 'KONSER',
+            label: 'Konser',
+        },
+        {
+            value: 'SINEMA',
+            label: 'Sinema',
+        },
+        {
+            value: 'TIYATRO',
+            label: 'Tiyatro',
+        },
+        {
+            value: 'SEMINER',
+            label: 'Seminer',
+        },
+    ];
+
+
+    const formik = useFormik({
+        initialValues: {
+            aciklama: '',
+            konumAdi: '',
+            adres: '',
+            etkinlikType: '',
+            etkinlikBaslangic: '',
+            etkinlikBitis: '',
+            etkinlikUcretleri: [{
+                kategoriType: '',
+                fiyat: '',
+            }],
+            etkinlikResimleri: [{
+                resimAd: '',
+            }],
+        },
+        onSubmit: (values) => {
+
+            axios.post('http://51.20.118.182/api/v1/etkinlik/create', values)
+                .then(res => {
+                    console.log('Success!');
+                })
+        }
+    })
+
+
+    const handleAddCategory = () => {
+        formik.setValues((prevValues) => ({
+            ...prevValues,
+            etkinlikUcretleri: [
+                ...prevValues.etkinlikUcretleri,
+                {
+                    kategoriType: '',
+                    fiyat: '',
+                },
+            ],
+        }));
+    };
+
+    const handleRemoveCategory = () => {
+        if (formik.values.etkinlikUcretleri.length > 1) {
+            formik.setValues((prevValues) => ({
+                ...prevValues,
+                etkinlikUcretleri: prevValues.etkinlikUcretleri.slice(0, -1),
+            }));
+        }
+    };
     return (<>
-        <div style={{ marginLeft: '2%' }}>
-            <div style={{ marginTop: '5%', marginLeft: '2%' }}>
-                <h3>Etkinlik Oluştur</h3>
-                <p>***Tüm alanları eksiksiz doldurduğunuzdan emin olun.</p>
-            </div>
-            <Box component="form"
-                sx={{
-                    '& .MuiTextField-root': { m: 1, width: '25ch' },
-                }}
-                noValidate
-                autoComplete="off"
-            >
-                <TextField id="outlined-basic" label="Konum" variant="outlined" size='small' />
-                <TextField id="outlined-basic" label="Adres" variant="outlined" size='small' />
-                <TextField
-                    id="fullWidth"
-                    label="Açıklama"
-                    style={{ width: 500 }}
-                    multiline
-                    rows={4}
-                    defaultValue=""
-                />
-                <TextField
-                    id="outlined-select-etkinlikType"
-                    select
-                    label="Etkinlik Türü"
-                    defaultValue="Konser"
-                    size='small'
-                >
-                    {etkinlikType.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DateTimeField
-                        label="Başlangıç Tarihi - Saati"
-                        value={value}
-                        onChange={(newValue) => setValue(newValue)}
-                        format="L HH:mm"
-                        slotProps={{ textField: { size: 'small' } }}
-                    />
-                    <DateTimeField
-                        label="Bitiş Tarihi - Saati"
-                        value={value}
-                        onChange={(newValue) => setValue(newValue)}
-                        format="L HH:mm"
-                        slotProps={{ textField: { size: 'small' } }}
-                    />
-                </LocalizationProvider>
-                <TextField id="outlined-basic" label="Etkinlik Türü" variant="outlined" size='small' />
+
+
+        <form onSubmit={formik.handleSubmit}>
+            <TextField
+                id="aciklama"
+                label="Açıklama"
+                variant="outlined"
+                onChange={formik.handleChange}
+                value={formik.values.aciklama}
+                margin="normal"
+            />
+            <TextField
+                id="konumAdi"
+                label="Konum Adı"
+                variant="outlined"
+                onChange={formik.handleChange}
+                value={formik.values.konumAdi}
+                margin="normal"
+            />
+            <TextField
+                id="adres"
+                label="Adres"
+                variant="outlined"
+                onChange={formik.handleChange}
+                value={formik.values.adres}
+                margin="normal"
+            />
+            <TextField
+                id="etkinlikType"
+                label="Etkinlik Türü"
+                variant="outlined"
+                onChange={formik.handleChange}
+                value={formik.values.etkinlikType}
+                margin="normal"
+            />
+            <TextField
+                id="etkinlikBaslangic"
+                label="Başlangıç Tarihi - Saati"
+                variant="outlined"
+                onChange={formik.handleChange}
+                value={formik.values.etkinlikBaslangic}
+                margin="normal"
+            />
+            <TextField
+                id="etkinlikBitis"
+                label="Bitiş Tarihi - Saati"
+                variant="outlined"
+                onChange={formik.handleChange}
+                value={formik.values.etkinlikBitis}
+                margin="normal"
+            />
+            <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', marginTop: '15px' }}>
+                    <Button type="button" variant="contained" color="primary" onClick={handleAddCategory}>
+                        Kategori Ekle
+                    </Button>
+                    <Button type="button" variant="contained" color="secondary" onClick={handleRemoveCategory} style={{ marginTop: '5px' }}>
+                        Kategori Kaldır
+                    </Button>
+                </div>
                 <div >
-                    <TextField id="kategori-1" label="Kategori-1" variant="outlined" size='small' />
-                    <TextField id="kategori-2" label="Kategori-2" variant="outlined" size='small' />
-                    <TextField id="kategori-3" label="Kategori-3" variant="outlined" size='small' />
-                    <TextField id="kategori-4" label="Kategori-4" variant="outlined" size='small' />
-                    <TextField id="kategori-5" label="Kategori-5" variant="outlined" size='small' />
+                    {formik.values.etkinlikUcretleri.map((ucret, index) => (
+                        <div key={index} >
+                            <TextField
+                                id={`kategoriType-${index}`}
+                                label={`Kategori Type ${index + 1}`}
+                                variant="outlined"
+                                onChange={(e) => {
+                                    formik.handleChange(e);
+                                    formik.setFieldValue(`etkinlikUcretleri[${index}].kategoriType`, e.target.value);
+                                }}
+                                value={formik.values.etkinlikUcretleri[index].kategoriType}
+                                margin="normal"
+                                style={{ marginLeft: '5px' }}
+                            />
+                            <TextField
+                                id={`fiyat-${index}`}
+                                label={`Fiyat ${index + 1}`}
+                                variant="outlined"
+                                onChange={(e) => {
+                                    formik.handleChange(e);
+                                    formik.setFieldValue(`etkinlikUcretleri[${index}].fiyat`, e.target.value);
+                                }}
+                                value={formik.values.etkinlikUcretleri[index].fiyat}
+                                margin="normal"
+                                style={{ marginLeft: '5px' }}
+                            />
+                        </div>
+                    ))}
                 </div>
 
+            </div>
+            <Button type="submit" variant="contained" color="primary">
+                Gönder
+            </Button>
+        </form>
 
 
-            </Box >
-        </div >
     </>)
 }
 
