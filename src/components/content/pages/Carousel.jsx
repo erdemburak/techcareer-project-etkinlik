@@ -9,15 +9,15 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const images = [
     {
         label: 'banner-1',
-        imgPath: '../../images/carousel/banner-1.jpg',
+        imgPath: 'https://r.resimlink.com/7cAaOuoLTW9U.jpg',
     },
     {
         label: 'banner-2',
-        imgPath: '../../images/carousel/banner-2.jpg',
+        imgPath: 'https://r.resimlink.com/rYTq_.jpg',
     },
     {
         label: 'banner-3',
-        imgPath: '../../images/carousel/banner-3.jpg',
+        imgPath: 'https://r.resimlink.com/o705DyBUeQ_E.jpg',
     },
 ];
 
