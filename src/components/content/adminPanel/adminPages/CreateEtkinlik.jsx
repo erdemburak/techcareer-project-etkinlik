@@ -8,26 +8,6 @@ import React, { Fragment } from 'react'
 
 function CreateEtkinlik() {
 
-    const etkinlikType = [
-        {
-            value: 'KONSER',
-            label: 'Konser',
-        },
-        {
-            value: 'SINEMA',
-            label: 'Sinema',
-        },
-        {
-            value: 'TIYATRO',
-            label: 'Tiyatro',
-        },
-        {
-            value: 'SEMINER',
-            label: 'Seminer',
-        },
-    ];
-
-
     const formik = useFormik({
         initialValues: {
             aciklama: '',
@@ -78,7 +58,7 @@ function CreateEtkinlik() {
     return (<>
 
 
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} style={{ margin: '5%' }}>
             <TextField
                 id="aciklama"
                 label="Açıklama"
