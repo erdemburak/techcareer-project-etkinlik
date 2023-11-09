@@ -12,10 +12,10 @@ function AdminPanel() {
 
       <AdminSideBar />
 
-      <div>
+      <div style={{ margin: '5%' }}>
         <AdminMainPage />
         <CreateEtkinlik />
-        <UpdateEtkinlik />
+        {/* <UpdateEtkinlik /> */}
       </div>
 
     </div>
