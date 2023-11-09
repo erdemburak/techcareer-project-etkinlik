@@ -3,6 +3,7 @@ import { Route, Router, Routes, useNavigate } from 'react-router-dom'
 import CreateEtkinlik from './CreateEtkinlik'
 import UpdateEtkinlik from './UpdateEtkinlik'
 import axios from 'axios';
+import { Button } from '@mui/material';
 
 function AdminMainPage() {
     const navigate = useNavigate();
@@ -49,9 +50,12 @@ function AdminMainPage() {
         </Routes> */}
 
 
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <h2>Etkinlikler</h2>
+            <Button onClick={() => loadEtkinlik()}>Listeyi Güncelle</Button>
+        </div>
 
-
-        <table>
+        <table className='w3-table w3-striped w3-bordered w3-hoverable' style={{ maxWidth: 1100 }}>
             <thead>
                 <tr>
                     <th>Açıklama</th>

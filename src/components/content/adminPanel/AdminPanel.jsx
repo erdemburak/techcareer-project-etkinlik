@@ -4,7 +4,6 @@ import './css/styles.css'
 import AdminSideBar from './adminPages/AdminSideBar.jsx'
 import AdminMainPage from './adminPages/AdminMainPage.jsx'
 import CreateEtkinlik from './adminPages/CreateEtkinlik.jsx'
-import UpdateEtkinlik from './adminPages/UpdateEtkinlik.jsx'
 
 function AdminPanel() {
   return (<>
@@ -14,6 +13,7 @@ function AdminPanel() {
 
       <div style={{ margin: '5%' }}>
         <AdminMainPage />
+        <hr />
         <CreateEtkinlik />
         {/* <UpdateEtkinlik /> */}
       </div>
