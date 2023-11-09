@@ -1,7 +1,8 @@
 import React from 'react'
-import MainPage from './webEtkinlik/MainPage'
+import MainPage from './pages/MainPage'
 import { Route, Routes } from 'react-router'
-import AdminPanel from './adminPanel/AdminPanel'
+import AdminPanel from '../adminPanel/AdminPanel'
+
 
 function Content() {
   return (<>
