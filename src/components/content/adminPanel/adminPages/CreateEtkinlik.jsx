@@ -58,7 +58,7 @@ function CreateEtkinlik() {
     return (<>
 
 
-        <form onSubmit={formik.handleSubmit} style={{ margin: '5%' }}>
+        <form onSubmit={formik.handleSubmit}>
             <TextField
                 id="aciklama"
                 label="Açıklama"
