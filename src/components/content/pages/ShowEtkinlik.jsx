@@ -1,27 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './card.css';
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, TextField, Typography, MenuItem } from '@mui/material';
 
 function ShowEtkinlik() {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        axios.get('http://51.20.118.182/api/v1/etkinlik/list')
+        loadEtkinlik();
+    }, [])
+
+    const loadEtkinlik = () => {
+        axios.get(`http://51.20.118.182/api/v1/etkinlik/list`)
             .then((response) => {
                 setEvents(response.data);
             })
             .catch((error) => {
-                console.error('Veri çekme hatası:', error);
+                console.error('Error fetching event data:', error);
             });
-    }, []);
+    }
+
+    const etkinlikByType = ({ konum }) => {
+        axios.get(`http://51.20.118.182/api/v1/etkinlik/list`)
+            .then((response) => {
+                setEvents(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching event data:', error);
+            });
+    }
 
     return (<>
 
         <div style={{ backgroundColor: '#F2F2F2', padding: '20px' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
                 <h1 style={{ color: '#336699' }}>Etkinlik Listesi</h1>
-                <h1>Filter</h1>
+                <TextField
+                    id="outlined-select-currency"
+                    select
+                    label="Filtre"
+                    style={{ width: '200px' }}
+                >
+                    <MenuItem>Konuma Göre</MenuItem>
+                </TextField>
             </div>
             <hr />
 
@@ -33,7 +54,7 @@ function ShowEtkinlik() {
                                 <CardMedia
                                     component="img"
                                     height="200"
-                                    image={event.gorselUrl}
+                                    src={event.etkinlikResimleri[0].resimAd}
                                     title={event.aciklama}
                                     style={{ borderRadius: "4%" }}
                                 />

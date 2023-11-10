@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Route, Router, Routes, useNavigate } from 'react-router-dom'
+import { Link, Route, Router, Routes } from 'react-router-dom'
 import CreateEtkinlik from './CreateEtkinlik'
 import UpdateEtkinlik from './UpdateEtkinlik'
 import axios from 'axios';
 import { Button } from '@mui/material';
 
 function AdminMainPage() {
-    const navigate = useNavigate();
-
-    const handleUpdateButtonClick = (eventId) => {
-        // Butona tıklandığında, UpdateEtkinlik sayfasına yönlendirme yapılır
-        navigate.push(`/update/${eventId}`);
-    };
 
     const [etkinliklist, setetkinliklist] = useState([]);
 

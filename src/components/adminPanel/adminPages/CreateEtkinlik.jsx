@@ -1,4 +1,4 @@
-import { Box, Button, MenuItem, TextField } from '@mui/material'
+import { Button, MenuItem, TextField } from '@mui/material'
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React, { Fragment } from 'react'
@@ -76,7 +76,6 @@ function CreateEtkinlik() {
             <h2>Create Etkinlik</h2>
         </div>
 
-
         <form onSubmit={formik.handleSubmit}>
             <TextField
                 id="aciklama"
@@ -103,20 +102,13 @@ function CreateEtkinlik() {
                 margin="normal"
             />
             <TextField
-                id="outlined-select-currency"
-                select
+                id="etkinlikType"
                 label="Etkinlik Tipi"
-                defaultValue="KONSER"
+                variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.etkinlikType}
                 margin="normal"
-                style={{ width: '211px' }}
-            >
-                <MenuItem value="KONSER">Konser</MenuItem>
-                <MenuItem value="TIYATRO">Tiyatro</MenuItem>
-                <MenuItem value="SINEMA">Sinema</MenuItem>
-                <MenuItem value="SEMINER">Seminer</MenuItem>
-            </TextField>
+            />
             <TextField
                 id="etkinlikBaslangic"
                 label="Başlangıç Tarihi - Saati"
