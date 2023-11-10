@@ -4,24 +4,6 @@ import { useFormik } from 'formik';
 import React, { Fragment } from 'react'
 
 function CreateEtkinlik() {
-    const etkinlikTip = [
-        {
-            value: 'KONSER',
-            label: 'Konser',
-        },
-        {
-            value: 'SINEMA',
-            label: 'Sinema',
-        },
-        {
-            value: 'TIYATRO',
-            label: 'Tiyatro',
-        },
-        {
-            value: 'SEMINER',
-            label: 'Seminer',
-        },
-    ];
 
     const formik = useFormik({
         initialValues: {
@@ -62,11 +44,30 @@ function CreateEtkinlik() {
         }));
     };
 
+    const handleAddImage = () => {
+        formik.setValues((prevValues) => ({
+            ...prevValues,
+            etkinlikResimleri: [
+                ...prevValues.etkinlikResimleri,
+                {
+                    resimAd: '',
+                },
+            ],
+        }));
+    };
     const handleRemoveCategory = () => {
         if (formik.values.etkinlikUcretleri.length > 1) {
             formik.setValues((prevValues) => ({
                 ...prevValues,
                 etkinlikUcretleri: prevValues.etkinlikUcretleri.slice(0, -1),
+            }));
+        }
+    };
+    const handleRemoveImage = () => {
+        if (formik.values.etkinlikResimleri.length > 1) {
+            formik.setValues((prevValues) => ({
+                ...prevValues,
+                etkinlikResimleri: prevValues.etkinlikResimleri.slice(0, -1),
             }));
         }
     };
@@ -101,31 +102,21 @@ function CreateEtkinlik() {
                 value={formik.values.adres}
                 margin="normal"
             />
-            <Box
-                component="form"
-                sx={{
-                    '& .MuiTextField-root': { m: 1, width: '25ch' },
-                }}
-                noValidate
-                autoComplete="off"
+            <TextField
+                id="outlined-select-currency"
+                select
+                label="Etkinlik Tipi"
+                defaultValue="KONSER"
+                onChange={formik.handleChange}
+                value={formik.values.etkinlikType}
+                margin="normal"
+                style={{ width: '211px' }}
             >
-                <TextField
-                    id="etkinlik-tip"
-                    select
-                    label="Etkinlik Tip"
-                    defaultValue="KONSER"
-                    onChange={formik.handleChange}
-                    value={formik.values.etkinlikType}
-                    margin="normal"
-                    style={{ width: '211px' }}
-                >
-                    {etkinlikTip.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-            </Box>
+                <MenuItem value="KONSER">Konser</MenuItem>
+                <MenuItem value="TIYATRO">Tiyatro</MenuItem>
+                <MenuItem value="SINEMA">Sinema</MenuItem>
+                <MenuItem value="SEMINER">Seminer</MenuItem>
+            </TextField>
             <TextField
                 id="etkinlikBaslangic"
                 label="Başlangıç Tarihi - Saati"
@@ -143,51 +134,82 @@ function CreateEtkinlik() {
                 margin="normal"
             />
             <div style={{ display: 'flex' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', marginTop: '15px' }}>
-                    <Button type="button" variant="contained" color="primary" onClick={handleAddCategory}>
-                        Kategori Ekle
-                    </Button>
-                    <Button type="button" variant="contained" color="secondary" onClick={handleRemoveCategory} style={{ marginTop: '5px' }}>
-                        Kategori Kaldır
-                    </Button>
+                <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', marginTop: '15px' }}>
+                        <Button type="button" variant="contained" color="primary" onClick={handleAddCategory}>
+                            Kategori Ekle
+                        </Button>
+                        <Button type="button" variant="contained" color="secondary" onClick={handleRemoveCategory} style={{ marginTop: '5px' }}>
+                            Kategori Kaldır
+                        </Button>
+                    </div>
+                    <div >
+                        {formik.values.etkinlikUcretleri.map((ucret, index) => (
+                            <div key={index} >
+                                <TextField
+                                    id={`kategoriType-${index}`}
+                                    label={`Kategori Type ${index + 1}`}
+                                    variant="outlined"
+                                    onChange={(e) => {
+                                        formik.handleChange(e);
+                                        formik.setFieldValue(`etkinlikUcretleri[${index}].kategoriType`, e.target.value);
+                                    }}
+                                    value={formik.values.etkinlikUcretleri[index].kategoriType}
+                                    margin="normal"
+                                    style={{ marginLeft: '5px' }}
+                                />
+                                <TextField
+                                    id={`fiyat-${index}`}
+                                    label={`Fiyat ${index + 1}`}
+                                    variant="outlined"
+                                    onChange={(e) => {
+                                        formik.handleChange(e);
+                                        formik.setFieldValue(`etkinlikUcretleri[${index}].fiyat`, e.target.value);
+                                    }}
+                                    value={formik.values.etkinlikUcretleri[index].fiyat}
+                                    margin="normal"
+                                    style={{ marginLeft: '5px' }}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div >
-                    {formik.values.etkinlikUcretleri.map((ucret, index) => (
-                        <div key={index} >
-                            <TextField
-                                id={`kategoriType-${index}`}
-                                label={`Kategori Type ${index + 1}`}
-                                variant="outlined"
-                                onChange={(e) => {
-                                    formik.handleChange(e);
-                                    formik.setFieldValue(`etkinlikUcretleri[${index}].kategoriType`, e.target.value);
-                                }}
-                                value={formik.values.etkinlikUcretleri[index].kategoriType}
-                                margin="normal"
-                                style={{ marginLeft: '5px' }}
-                            />
-                            <TextField
-                                id={`fiyat-${index}`}
-                                label={`Fiyat ${index + 1}`}
-                                variant="outlined"
-                                onChange={(e) => {
-                                    formik.handleChange(e);
-                                    formik.setFieldValue(`etkinlikUcretleri[${index}].fiyat`, e.target.value);
-                                }}
-                                value={formik.values.etkinlikUcretleri[index].fiyat}
-                                margin="normal"
-                                style={{ marginLeft: '5px' }}
-                            />
-                        </div>
-                    ))}
+                <div style={{ display: 'flex', marginLeft: '10px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', marginTop: '15px' }}>
+                        <Button type="button" variant="contained" color="primary" onClick={handleAddImage}>
+                            Resim Ekle
+                        </Button>
+                        <Button type="button" variant="contained" color="secondary" onClick={handleRemoveImage} style={{ marginTop: '5px' }}>
+                            Resim Kaldır
+                        </Button>
+                    </div>
+                    <div >
+                        {formik.values.etkinlikResimleri.map((resim, index) => (
+                            <div key={index} >
+                                <TextField
+                                    id={`resimAd-${index}`}
+                                    label={`Resim ${index + 1}`}
+                                    variant="outlined"
+                                    onChange={(e) => {
+                                        formik.handleChange(e);
+                                        formik.setFieldValue(`etkinlikResimleri[${index}].resimAd`, e.target.value);
+                                    }}
+                                    value={formik.values.etkinlikResimleri[index].resimAd}
+                                    margin="normal"
+                                    style={{ marginLeft: '5px' }}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
-
             </div>
 
 
-            <Button type="submit" variant="contained" color="primary">
-                Gönder
-            </Button>
+            <div style={{ display: 'flex', justifyContent: 'right', marginRight: '50px' }}>
+                <Button type="submit" variant="contained" color="primary" style={{ marginTop: '5px' }}>
+                    Gönder
+                </Button>
+            </div>
         </form>
 
 
