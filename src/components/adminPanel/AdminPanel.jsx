@@ -12,12 +12,17 @@ function AdminPanel() {
 
       <AdminSideBar />
 
+      {/*  <Routes>
+        <Route path="/admin/create" element={<CreateEtkinlik />} />
+        <Route path="/admin/update" element={<UpdateEtkinlik />} />
+      </Routes> */}
+
       <div style={{ margin: '5%' }}>
         <AdminMainPage />
         <hr />
         <CreateEtkinlik />
         <hr />
-        <UpdateEtkinlik />
+        {/* <UpdateEtkinlik /> */}
       </div>
 
     </div>

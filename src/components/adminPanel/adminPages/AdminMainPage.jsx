@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Route, Router, Routes } from 'react-router-dom'
-import CreateEtkinlik from './CreateEtkinlik'
-import UpdateEtkinlik from './UpdateEtkinlik'
 import axios from 'axios';
 import { Button } from '@mui/material';
 
@@ -38,10 +35,7 @@ function AdminMainPage() {
 
 
     return (<>
-        {/* <Routes>
-            <Route path="/admin/create" element={<CreateEtkinlik />} />
-            <Route path="/admin/update" element={<UpdateEtkinlik />} />
-        </Routes> */}
+
 
 
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -68,10 +62,10 @@ function AdminMainPage() {
                         <td>{event.adres}</td>
                         <td>{event.etkinlikType}</td>
                         <td>{event.etkinlikBaslangic}</td>
-                        <td>{event.etkinlikBitis}</td>
+                        <td>{event.etkinlikBitis}</td>{/* 
                         <td>
                             <Link to='/admin/update' className="button">Update</Link>
-                        </td>
+                        </td> */}
                         <td>
                             <button onClick={() => deleteEtkinlik(event.id)}>Delete</button>
                         </td>
@@ -79,8 +73,6 @@ function AdminMainPage() {
                 ))}
             </tbody>
         </table>
-
-
     </>)
 }
 
