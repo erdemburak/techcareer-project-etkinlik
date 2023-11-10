@@ -10,11 +10,7 @@ function MainPage() {
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Carousel />
             </div>
-            <ShowEtkinlik
-                img="https://cdn.bubilet.com.tr/files/Etkinlik/ajda-pekkan--48333.jpg"
-                title="Ajda Pekkan"
-                description="Congresium Ankara 22 Aralık Cuma - 21.00"
-            />
+            <ShowEtkinlik />
         </div>
 
     </>)

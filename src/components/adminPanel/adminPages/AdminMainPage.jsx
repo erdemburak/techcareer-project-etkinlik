@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route, Router, Routes, useNavigate } from 'react-router-dom'
+import { Link, Route, Router, Routes, useNavigate } from 'react-router-dom'
 import CreateEtkinlik from './CreateEtkinlik'
 import UpdateEtkinlik from './UpdateEtkinlik'
 import axios from 'axios';
@@ -76,7 +76,7 @@ function AdminMainPage() {
                         <td>{event.etkinlikBaslangic}</td>
                         <td>{event.etkinlikBitis}</td>
                         <td>
-                            <button onClick={() => handleUpdateButtonClick(event.id)}>Güncelle</button>
+                            <Link to='/admin/update' className="button">Update</Link>
                         </td>
                         <td>
                             <button onClick={() => deleteEtkinlik(event.id)}>Delete</button>

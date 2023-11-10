@@ -1,9 +1,27 @@
 import { Box, Button, MenuItem, TextField } from '@mui/material'
 import axios from 'axios';
-import { Field, FieldArray, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import React, { Fragment } from 'react'
 
 function CreateEtkinlik() {
+    const etkinlikTip = [
+        {
+            value: 'KONSER',
+            label: 'Konser',
+        },
+        {
+            value: 'SINEMA',
+            label: 'Sinema',
+        },
+        {
+            value: 'TIYATRO',
+            label: 'Tiyatro',
+        },
+        {
+            value: 'SEMINER',
+            label: 'Seminer',
+        },
+    ];
 
     const formik = useFormik({
         initialValues: {
@@ -53,6 +71,9 @@ function CreateEtkinlik() {
         }
     };
     return (<>
+        <div>
+            <h2>Create Etkinlik</h2>
+        </div>
 
 
         <form onSubmit={formik.handleSubmit}>
@@ -80,14 +101,31 @@ function CreateEtkinlik() {
                 value={formik.values.adres}
                 margin="normal"
             />
-            <TextField
-                id="etkinlikType"
-                label="Etkinlik Türü"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.etkinlikType}
-                margin="normal"
-            />
+            <Box
+                component="form"
+                sx={{
+                    '& .MuiTextField-root': { m: 1, width: '25ch' },
+                }}
+                noValidate
+                autoComplete="off"
+            >
+                <TextField
+                    id="etkinlik-tip"
+                    select
+                    label="Etkinlik Tip"
+                    defaultValue="KONSER"
+                    onChange={formik.handleChange}
+                    value={formik.values.etkinlikType}
+                    margin="normal"
+                    style={{ width: '211px' }}
+                >
+                    {etkinlikTip.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
+            </Box>
             <TextField
                 id="etkinlikBaslangic"
                 label="Başlangıç Tarihi - Saati"

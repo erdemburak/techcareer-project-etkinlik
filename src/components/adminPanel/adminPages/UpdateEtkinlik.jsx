@@ -70,8 +70,11 @@ const UpdateEtkinlik = ({ eventId }) => {
         }
     };
 
-    return (
-        <form onSubmit={formik.handleSubmit} style={{ margin: '5%' }}>
+    return (<>
+        <div>
+            <h2>Update Etkinlik</h2>
+        </div>
+        <form onSubmit={formik.handleSubmit} >
             <TextField
                 id="aciklama"
                 label="Açıklama"
@@ -165,7 +168,7 @@ const UpdateEtkinlik = ({ eventId }) => {
                 Gönder
             </Button>
         </form>
-    );
+    </>);
 };
 
 export default UpdateEtkinlik;
