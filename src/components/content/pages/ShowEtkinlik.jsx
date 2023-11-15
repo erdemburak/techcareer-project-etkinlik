@@ -51,8 +51,10 @@ function ShowEtkinlik() {
             <div style={{ backgroundColor: '#F2F2F2', padding: '20px' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
                     <h1 style={{ color: '#336699' }}>Etkinlik Listesi</h1>
-                    <input type="date" onChange={(e) => setSelectedDate(e.target.value)} />
-                    <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} />
+                    <div  style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '330px'}}>
+                        <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} />
+                         <input type="date" onChange={(e) => setSelectedDate(e.target.value)} />
+                    </div>
                 </div>
                 <hr />
 
