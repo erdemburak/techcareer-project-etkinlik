@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './card.css';
 import { Button, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function ShowEtkinlik() {
     const [events, setEvents] = useState([]);
@@ -40,10 +41,10 @@ function ShowEtkinlik() {
 
         return true;
     });
+    const konumaGoreListe = (konum) => {
+        var konumaGoreEtkinlik = events.filter(q => q.konumAdi === konum)
 
-    const konumaGoreListe = () => {
-        console.log("deneme")
-
+        setEvents(konumaGoreEtkinlik);
     }
 
     return (
@@ -65,18 +66,19 @@ function ShowEtkinlik() {
                             {/* Kart Detayları */}
                             <Card style={{ backgroundColor: 'white' }}>
                                 <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        height="200"
-                                        src={event.etkinlikResimleri[0].resimAd}
-                                        title={event.aciklama}
-                                        style={{ borderRadius: "4%" }}
-                                    />
+                                <Link to={'/etkinlik/${event.id}'} style={{ textDecoration: 'none' }}>
+                                        <CardMedia
+                                            component="img"
+                                            height="200"
+                                            src={event.etkinlikResimleri[0].resimAd}
+                                            title={event.aciklama}
+                                            style={{ borderRadius: "4%" }}
+                                        /> </Link>
                                     <CardContent>
                                         <Typography variant="h6" gutterBottom>
                                             {event.aciklama}
                                         </Typography>
-                                        <Typography onClick={() => konumaGoreListe()} variant="body2" color="textSecondary">
+                                        <Typography onClick={() => konumaGoreListe(event.konumAdi)} variant="body2" color="textSecondary">
                                             Konum: {event.konumAdi}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
