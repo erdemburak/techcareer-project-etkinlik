@@ -10,9 +10,8 @@ function AdminSideBar() {
             </div>
             <div className="list-group list-group-flush">
 
-                <Link to='' className="list-group-item list-group-item-action list-group-item-light p-3">Dashboard</Link>
-                <Link to='' className="list-group-item list-group-item-action list-group-item-light p-3">Create</Link>
-                <Link to='' className="list-group-item list-group-item-action list-group-item-light p-3">Update</Link>
+                <Link to='dashboard' className="list-group-item list-group-item-action list-group-item-light p-3">Dashboard</Link>
+                <Link to='create' className="list-group-item list-group-item-action list-group-item-light p-3">Create</Link>
 
 
             </div>

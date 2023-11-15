@@ -1,4 +1,4 @@
-import { Button, MenuItem, TextField } from '@mui/material'
+import { Button, TextField } from '@mui/material'
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React, { Fragment } from 'react'
@@ -73,7 +73,7 @@ function CreateEtkinlik() {
     };
     return (<>
         <div>
-            <h2>Create Etkinlik</h2>
+            <h2>Etkinlik Oluştur</h2>
         </div>
 
         <form onSubmit={formik.handleSubmit}>
