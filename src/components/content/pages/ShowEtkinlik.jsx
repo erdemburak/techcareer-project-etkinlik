@@ -125,6 +125,11 @@ function ShowEtkinlik() {
         return true;
     });
 
+    const konumaGoreListe = () => {
+        console.log("deneme")
+
+    }
+
     return (
         <>
             <div style={{ backgroundColor: '#F2F2F2', padding: '20px' }}>
@@ -153,7 +158,7 @@ function ShowEtkinlik() {
                                         <Typography variant="h6" gutterBottom>
                                             {event.aciklama}
                                         </Typography>
-                                        <Typography variant="body2" color="textSecondary">
+                                        <Typography onClick={() => konumaGoreListe()} variant="body2" color="textSecondary">
                                             Konum: {event.konumAdi}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
