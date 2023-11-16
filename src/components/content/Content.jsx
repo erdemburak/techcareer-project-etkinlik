@@ -13,10 +13,8 @@ function Content() {
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/etkinlik/:id" element={<EtkinlikDetail />} />
-      <Route path="/admin" element={<AdminPanel />} >
-        <Route path="dashboard" element={<AdminMainPage />} />
-        <Route path="create" element={<CreateEtkinlik />} />
-      </Route>
+      <Route path="/admin" element={<AdminMainPage />} />
+      <Route path="/admin/create" element={<CreateEtkinlik />} />
     </Routes>
 
 
