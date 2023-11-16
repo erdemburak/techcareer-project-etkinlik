@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './card.css';
 import { Button, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function ShowEtkinlik() {
     const [events, setEvents] = useState([]);
@@ -32,18 +33,18 @@ function ShowEtkinlik() {
 
         if (searchTerm) {
             return (
-                (event.aciklama && event.aciklama.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                (event.yapanGrup && event.yapanGrup.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                (event.yapanKisi && event.yapanKisi.toLowerCase().includes(searchTerm.toLowerCase()))
+                event.aciklama.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                event.yapanGrup.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                event.yapanKisi.toLowerCase().includes(searchTerm.toLowerCase())
             );
         }
 
         return true;
     });
+    const konumaGoreListe = (konum) => {
+        var konumaGoreEtkinlik = events.filter(q => q.konumAdi === konum)
 
-    const konumaGoreListe = () => {
-        console.log("deneme")
-
+        setEvents(konumaGoreEtkinlik);
     }
 
     return (
@@ -51,8 +52,10 @@ function ShowEtkinlik() {
             <div style={{ backgroundColor: '#F2F2F2', padding: '20px' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
                     <h1 style={{ color: '#336699' }}>Etkinlik Listesi</h1>
-                    <input type="date" onChange={(e) => setSelectedDate(e.target.value)} />
-                    <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} />
+                    <div  style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '330px'}}>
+                        <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} />
+                         <input type="date" onChange={(e) => setSelectedDate(e.target.value)} />
+                    </div>
                 </div>
                 <hr />
 
@@ -63,18 +66,19 @@ function ShowEtkinlik() {
                             {/* Kart Detayları */}
                             <Card style={{ backgroundColor: 'white' }}>
                                 <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        height="200"
-                                        src={event.etkinlikResimleri[0].resimAd}
-                                        title={event.aciklama}
-                                        style={{ borderRadius: "4%" }}
-                                    />
+                                <Link to={'/etkinlik/${event.id}'} style={{ textDecoration: 'none' }}>
+                                        <CardMedia
+                                            component="img"
+                                            height="200"
+                                            src={event.etkinlikResimleri[0].resimAd}
+                                            title={event.aciklama}
+                                            style={{ borderRadius: "4%" }}
+                                        /> </Link>
                                     <CardContent>
                                         <Typography variant="h6" gutterBottom>
                                             {event.aciklama}
                                         </Typography>
-                                        <Typography onClick={() => konumaGoreListe()} variant="body2" color="textSecondary">
+                                        <Typography onClick={() => konumaGoreListe(event.konumAdi)} variant="body2" color="textSecondary">
                                             Konum: {event.konumAdi}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
