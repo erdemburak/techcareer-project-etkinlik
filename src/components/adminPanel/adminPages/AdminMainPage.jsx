@@ -1,3 +1,5 @@
+import '../js/scripts.js'
+import '../css/styles.css'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Button } from '@mui/material';
@@ -79,6 +81,7 @@ function AdminMainPage() {
                 </table>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     </>)
 }
 

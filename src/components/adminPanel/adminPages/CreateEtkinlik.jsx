@@ -1,3 +1,5 @@
+import '../js/scripts.js'
+import '../css/styles.css'
 import { Button, TextField } from '@mui/material'
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -212,6 +214,7 @@ function CreateEtkinlik() {
             </div>
 
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     </>)
 }
 
