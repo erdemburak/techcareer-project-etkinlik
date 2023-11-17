@@ -69,14 +69,50 @@ function EtkinlikDetail() {
                         </AutoPlaySwipeableViews>
                     </Box></div>
                 <div style={{ width: '50%' }}>
-                    <h2>{etkinlik.aciklama}</h2>
+                    <h2>{etkinlik.ad}</h2>
                     <p>Konum: {etkinlik.konumAdi}</p>
                     <p>Adres: {etkinlik.adres}</p>
                     <p>Tür: {etkinlik.etkinlikType}</p>
                     <p>Başlangıç: {moment(etkinlik.etkinlikBaslangic).format('DD/MM/YYYY HH:mm')}</p>
                     <p>Bitiş: {moment(etkinlik.etkinlikBitis).format('DD/MM/YYYY HH:mm')}</p>
-                    {/* Diğer detaylar */}
+
+
+                    <div style={{ display: 'flex' }}>
+                        <div style={{ marginTop: '10px', marginRight: '10px' }}>
+                            <img src="https://ckm.kadikoy.bel.tr/Uploads/Image/images/b_salon_oturma.jpg" alt="price" style={{ width: '150px', height: '150px' }} />
+                        </div>
+                        <table className='w3-table w3-striped w3-bordered w3-hoverable'>
+                            <thead>
+                                <tr>
+                                    <th>Kategori</th>
+                                    <th>Ücret</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    etkinlik.etkinlikUcretleri && etkinlik.etkinlikUcretleri.map((item, index) => {
+                                        return (
+                                            <tr key={item.id}>
+                                                <td>Kategori {index + 1}</td>
+                                                <td>{item.fiyat}</td>
+                                            </tr>
+                                        )
+                                    }
+                                    )}
+                            </tbody>
+                        </table>
+
+                    </div>
+
                 </div>
+            </div>
+            <hr />
+            <div>
+                Açıklama: {etkinlik.aciklama}
+            </div>
+            <hr />
+            <div>
+                Map
             </div>
         </div>
     </>
