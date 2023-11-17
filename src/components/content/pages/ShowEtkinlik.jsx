@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './card.css';
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { Card, CardActionArea, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { addFavoriteEvent, removeFavoriteEvent } from '../favorite/favoriteEventsSlice'
+import { useDispatch, useSelector } from 'react-redux';
 
 function ShowEtkinlik() {
     const [events, setEvents] = useState([]);
     const [selectedDate, setSelectedDate] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
+    const dispatch = useDispatch();
+    const favoriteEvents = useSelector(state => state.favoriteEvents);
 
     useEffect(() => {
         axios.get('http://51.20.118.182/api/v1/etkinlik/list')
@@ -19,6 +25,23 @@ function ShowEtkinlik() {
                 console.error('Veri çekme hatası:', error);
             });
     }, []);
+
+
+
+
+    const handleFavoriteClick = (eventId) => {
+        // Check if the event is already in favorites
+        const isFavorite = favoriteEvents.some(event => event.id === eventId);
+
+        if (isFavorite) {
+            // Remove from favorites
+            dispatch(removeFavoriteEvent(eventId));
+        } else {
+            // Add to favorites
+            // Assuming 'event' has all the necessary details needed for your favoriteEvents state
+            dispatch(addFavoriteEvent(events.find(event => event.id === eventId)));
+        }
+    };
 
     const filteredEvents = events.filter(event => {
         if (selectedDate) {
@@ -91,8 +114,16 @@ function ShowEtkinlik() {
                                         <Typography variant="body2" color="textSecondary">
                                             Bitiş: {moment(event.etkinlikBitis).format('DD/MM/YYYY HH:mm')}
                                         </Typography>
+
                                     </CardContent>
                                 </CardActionArea>
+                                <IconButton aria-label="add to favorites" onClick={() => handleFavoriteClick(event.id)}>
+                                    <FavoriteIcon color={favoriteEvents.some(favEvent => favEvent.id === event.id) ? 'secondary' : 'default'} />
+                                </IconButton>
+                                <IconButton aria-label="share">
+                                    <ShareIcon />
+                                </IconButton>
+
                             </Card>
                         </div>
                     ))}
