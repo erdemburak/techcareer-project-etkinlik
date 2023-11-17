@@ -37,7 +37,7 @@ function Navbar() {
                                     textDecoration: 'none',
                                 }}
                             >
-                                LOGO
+                                ETKINLIK
                             </Typography>
                         </Box>
 
