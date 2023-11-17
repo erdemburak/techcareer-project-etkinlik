@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './card.css';
-import { Button, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 function ShowEtkinlik() {
     const [events, setEvents] = useState([]);
@@ -39,7 +40,7 @@ function ShowEtkinlik() {
             );
         }
 
-        return true;
+        return new Date(event.etkinlikBitis) >= new Date();
     });
     const konumaGoreListe = (konum) => {
         var konumaGoreEtkinlik = events.filter(q => q.konumAdi === konum)
@@ -53,8 +54,8 @@ function ShowEtkinlik() {
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
                     <h1 style={{ color: '#336699' }}>Etkinlik Listesi</h1>
                     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '330px' }}>
-                        <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} />
-                        <input type="date" onChange={(e) => setSelectedDate(e.target.value)} />
+                        <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} style={{ border: 0, borderRadius: '5%' }} />
+                        <input type="date" onChange={(e) => setSelectedDate(e.target.value)} style={{ border: 0, borderRadius: '5%' }} />
                     </div>
                 </div>
                 <hr />
@@ -76,22 +77,19 @@ function ShowEtkinlik() {
                                         /> </Link>
                                     <CardContent>
                                         <Typography variant="h6" gutterBottom>
-                                            {event.aciklama}
+                                            {event.ad}
                                         </Typography>
                                         <Typography onClick={() => konumaGoreListe(event.konumAdi)} variant="body2" color="textSecondary">
                                             Konum: {event.konumAdi}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
-                                            Adres: {event.adres}
-                                        </Typography>
-                                        <Typography variant="body2" color="textSecondary">
                                             Tür: {event.etkinlikType}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
-                                            Başlangıç: {event.etkinlikBaslangic}
+                                            Başlangıç: {moment(event.etkinlikBaslangic).format('DD/MM/YYYY HH:mm')}
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
-                                            Bitiş: {event.etkinlikBitis}
+                                            Bitiş: {moment(event.etkinlikBitis).format('DD/MM/YYYY HH:mm')}
                                         </Typography>
                                     </CardContent>
                                 </CardActionArea>
