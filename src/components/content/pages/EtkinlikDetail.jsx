@@ -78,7 +78,7 @@ function EtkinlikDetail() {
             <p>Bitiş: {moment(etkinlik.etkinlikBitis).format('DD/MM/YYYY HH:mm')}</p>
 
             <SocialMediaButtons
-              url={`http://example.com/etkinlik/${id}`}  // Etkinlik URL'sini güncelleyin
+              url={`http://example.com/etkinlik/${id}`}  
               title={etkinlik.aciklama}  
               description={`Etkinlik: ${etkinlik.aciklama}, Konum: ${etkinlik.konumAdi}`}  
               image={images[0].imgPath}  
