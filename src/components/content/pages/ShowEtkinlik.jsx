@@ -26,9 +26,6 @@ function ShowEtkinlik() {
             });
     }, []);
 
-
-
-
     const handleFavoriteClick = (eventId) => {
         // Check if the event is already in favorites
         const isFavorite = favoriteEvents.some(event => event.id === eventId);
@@ -57,9 +54,9 @@ function ShowEtkinlik() {
 
         if (searchTerm) {
             return (
-                event.aciklama.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                event.yapanGrup.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                event.yapanKisi.toLowerCase().includes(searchTerm.toLowerCase())
+                (event.ad && event.ad.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                (event.yapanGrup && event.yapanGrup.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                (event.yapanKisi && event.yapanKisi.toLowerCase().includes(searchTerm.toLowerCase()))
             );
         }
 
@@ -75,7 +72,7 @@ function ShowEtkinlik() {
         <>
             <div style={{ backgroundColor: '#F2F2F2', padding: '20px' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
-                    <h1 style={{ color: '#336699' }}>Etkinlik Listesi</h1>
+                    <h2 style={{ color: '#336699' }}>Etkinlik Listesi</h2>
                     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '330px' }}>
                         <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} style={{ border: 0, borderRadius: '5%' }} />
                         <input type="date" onChange={(e) => setSelectedDate(e.target.value)} style={{ border: 0, borderRadius: '5%' }} />
