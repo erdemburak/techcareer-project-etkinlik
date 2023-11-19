@@ -1,6 +1,45 @@
 .showEtkinlik {
 
-
 background-color: #0303c7;
 padding: 20px;
 }
+.custom-card {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .custom-link {
+    text-decoration: none;
+  }
+  
+  .custom-card-media {
+    border-radius: 8px;
+  }
+  
+  .custom-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .custom-location-text {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .custom-type-text {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .custom-date-time-text {
+    font-size: 0.8rem;
+    color: #777;
+  }
+  
+  .custom-icon-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+  }

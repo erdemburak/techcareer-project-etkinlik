@@ -78,50 +78,51 @@ function ShowEtkinlik() {
                         <input type="date" onChange={(e) => setSelectedDate(e.target.value)} style={{ border: 0, borderRadius: '5%' }} />
                     </div>
                 </div>
-                
+
 
                 {/* Etkinlik Kartları */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
                     {filteredEvents.map(event => (
                         <div key={event.id} style={{ width: '300px', margin: '16px' }}>
                             {/* Kart Detayları */}
-                            <Card style={{ backgroundColor: 'white' }}>
+                            <Card className="custom-card">
                                 <CardActionArea>
-                                    <Link to={`/etkinlik/${event.id}`} style={{ textDecoration: 'none' }}>
+                                    <Link to={`/etkinlik/${event.id}`} className="custom-link">
                                         <CardMedia
                                             component="img"
                                             height="200"
                                             src={event.etkinlikResimleri[0].resimAd}
                                             title={event.aciklama}
-                                            style={{ borderRadius: "4%" }}
-                                        /> </Link>
+                                            className="custom-card-media"
+                                        />
+                                    </Link>
                                     <CardContent>
-                                        <Typography variant="h6" gutterBottom>
+                                        <Typography variant="h6" gutterBottom className="custom-card-title">
                                             {event.ad}
                                         </Typography>
-                                        <Typography onClick={() => konumaGoreListe(event.konumAdi)} variant="body2" color="textSecondary">
+                                        <Typography onClick={() => konumaGoreListe(event.konumAdi)} variant="body2" color="textSecondary" className="custom-location-text">
                                             Konum: {event.konumAdi}
                                         </Typography>
-                                        <Typography variant="body2" color="textSecondary">
+                                        <Typography variant="body2" color="textSecondary" className="custom-type-text">
                                             Tür: {event.etkinlikType}
                                         </Typography>
-                                        <Typography variant="body2" color="textSecondary">
+                                        <Typography variant="body2" color="textSecondary" className="custom-date-time-text">
                                             Başlangıç: {moment(event.etkinlikBaslangic).format('DD/MM/YYYY HH:mm')}
                                         </Typography>
-                                        <Typography variant="body2" color="textSecondary">
+                                        <Typography variant="body2" color="textSecondary" className="custom-date-time-text">
                                             Bitiş: {moment(event.etkinlikBitis).format('DD/MM/YYYY HH:mm')}
                                         </Typography>
-
                                     </CardContent>
                                 </CardActionArea>
-                                <IconButton aria-label="add to favorites" onClick={() => handleFavoriteClick(event.id)}>
-                                    <FavoriteIcon color={favoriteEvents.some(favEvent => favEvent.id === event.id) ? 'secondary' : 'default'} />
-                                </IconButton>
-                                <IconButton aria-label="share">
-                                    <ShareIcon />
-                                </IconButton>
-
-                            </Card>
+                                <div className="custom-icon-container">
+                                    <IconButton aria-label="add to favorites" onClick={() => handleFavoriteClick(event.id)}>
+                                        <FavoriteIcon color={favoriteEvents.some((favEvent) => favEvent.id === event.id) ? 'secondary' : 'default'} />
+                                    </IconButton>
+                                    <IconButton aria-label="share">
+                                        <ShareIcon />
+                                    </IconButton>
+                                </div>
+                            </Card>;
                         </div>
                     ))}
                 </div>
