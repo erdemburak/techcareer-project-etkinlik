@@ -1,80 +1,104 @@
+import { AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
+import AdbIcon from '@mui/icons-material/Adb';
+import MenuIcon from '@mui/icons-material/Menu';
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
-    return (<>
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-light " style={{ backgroundColor: '#F2F2F2' }} >
-                <a className="navbar-brand" href="#" style={{ paddingLeft: '2%' }}>
-                    Navbar
-                </a>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon" />
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent" >
-                    <form className="form-inline my-2 my-lg-0" style={{ paddingRight: '2%' }}>
-                        <input
-                            className="form-control mr-sm-2"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search"
-                        />
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-                            Search
-                        </button>
-                    </form>
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">
-                                Home <span className="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                Link
-                            </a>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a
-                                className="nav-link dropdown-toggle"
-                                href="#"
-                                id="navbarDropdown"
-                                role="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
+
+    return (
+        <>
+            <AppBar position="static" style={{ backgroundColor: '#C3C3C3' }}>
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <AdbIcon sx={{ mr: 1 }} />
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component={Link}
+                                to={`/`}
+                                sx={{
+                                    mr: 2,
+                                    fontFamily: 'monospace',
+                                    fontWeight: 700,
+                                    letterSpacing: '.3rem',
+                                    color: 'inherit',
+                                    textDecoration: 'none',
+                                }}
                             >
+                                ETKINLIK
+                            </Typography>
+                        </Box>
+
+                        <Box sx={{ flexGrow: 1 }} />
+
+                        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                            <Button key='Etkinlikler' component={Link} to={`/`} sx={{ my: 2, color: 'white', display: 'block' }} >
                                 Etkinlikler
-                            </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href="#">
-                                    Action
-                                </a>
-                                <a className="dropdown-item" href="#">
-                                    Another action
-                                </a>
-                                <div className="dropdown-divider" />
-                                <a className="dropdown-item" href="#">
-                                    Something else here
-                                </a>
-                            </div>
-                        </li>
+                            </Button>
+                            <Button key='EskiEtkinlikler' component={Link} to={`/eskiEtkinlikler`} sx={{ my: 2, color: 'white', display: 'block' }} >
+                                Geçmiş Etkinlikler
+                            </Button>
+                            <Button key='Favoriler' component={Link} to={`/favoriEtkinlikler`} sx={{ my: 2, color: 'white', display: 'block' }} >
+                                Favoriler
+                            </Button>
+                        </Box>
 
-                    </ul>
-
-                </div>
-            </nav>
-
-        </div>
-
-    </>)
+                        <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                            <IconButton
+                                size="large"
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleOpenNavMenu}
+                                color="inherit"
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorElNav}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'left',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                }}
+                                open={Boolean(anchorElNav)}
+                                onClose={handleCloseNavMenu}
+                                sx={{
+                                    display: { xs: 'block', md: 'none' },
+                                }}
+                            >
+                                <MenuItem key='Etkinlikler' onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center" component={Link} to={`/`}>Etkinlikler</Typography>
+                                </MenuItem>
+                                <MenuItem key='EskiEtkinlikler' onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center" component={Link} to={`/eskiEtkinlikler`}>Geçmiş Etkinlikler</Typography>
+                                </MenuItem>
+                                <MenuItem key='Favoriler' onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center" component={Link} to={`/favoriEtkinlikler`}>Favoriler</Typography>
+                                </MenuItem>
+                            </Menu>
+                        </Box>
+                    </Toolbar>
+                </Container>
+            </AppBar>
+        </>
+    );
 }
-
-export default Navbar
+export default Navbar;

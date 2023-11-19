@@ -10,6 +10,7 @@ function CreateEtkinlik() {
 
     const formik = useFormik({
         initialValues: {
+            ad: '',
             aciklama: '',
             konumAdi: '',
             adres: '',
@@ -85,6 +86,14 @@ function CreateEtkinlik() {
                 </div>
 
                 <form onSubmit={formik.handleSubmit}>
+                    <TextField
+                        id="ad"
+                        label="Etkinlik Adı"
+                        variant="outlined"
+                        onChange={formik.handleChange}
+                        value={formik.values.ad}
+                        margin="normal"
+                    />
                     <TextField
                         id="aciklama"
                         label="Açıklama"

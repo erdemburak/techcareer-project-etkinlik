@@ -52,6 +52,7 @@ function AdminMainPage() {
                 <table className='w3-table w3-striped w3-bordered w3-hoverable' style={{ maxWidth: 1100 }}>
                     <thead>
                         <tr>
+                            <th>Etkinlik Adı</th>
                             <th>Açıklama</th>
                             <th>Konum Adı</th>
                             <th>Adres</th>
@@ -63,6 +64,7 @@ function AdminMainPage() {
                     <tbody>
                         {etkinliklist && etkinliklist.map((event, index) => (
                             <tr key={index}>
+                                <td>{event.ad}</td>
                                 <td>{event.aciklama}</td>
                                 <td>{event.konumAdi}</td>
                                 <td>{event.adres}</td>
