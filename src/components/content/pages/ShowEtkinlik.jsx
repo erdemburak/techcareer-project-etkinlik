@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './card.css';
+import './Etkinlik.css';
 import { Card, CardActionArea, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
@@ -70,7 +70,7 @@ function ShowEtkinlik() {
 
     return (
         <>
-            <div style={{ backgroundColor: '#F2F2F2', padding: '20px' }}>
+            <div className='showEtkinlik'>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
                     <h2 style={{ color: '#336699' }}>Etkinlik Listesi</h2>
                     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '330px' }}>
@@ -78,7 +78,7 @@ function ShowEtkinlik() {
                         <input type="date" onChange={(e) => setSelectedDate(e.target.value)} style={{ border: 0, borderRadius: '5%' }} />
                     </div>
                 </div>
-                <hr />
+                
 
                 {/* Etkinlik Kartları */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>

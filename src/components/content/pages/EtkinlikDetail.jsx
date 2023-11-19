@@ -76,6 +76,13 @@ function EtkinlikDetail() {
                     <p>Tür: {etkinlik.etkinlikType}</p>
                     <p>Başlangıç: {moment(etkinlik.etkinlikBaslangic).format('DD/MM/YYYY HH:mm')}</p>
                     <p>Bitiş: {moment(etkinlik.etkinlikBitis).format('DD/MM/YYYY HH:mm')}</p>
+                    <SocialMediaButtons
+                    url={`http://localhost:3000/etkinlik/${id}`}
+                    title={etkinlik.aciklama}
+                    description={`Etkinlik: ${etkinlik.aciklama}, Konum: ${etkinlik.konumAdi}`}
+                    image={images[0].imgPath}
+                    />
+          
 
 
                     <div style={{ display: 'flex' }}>
