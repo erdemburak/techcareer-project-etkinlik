@@ -69,64 +69,63 @@ function ShowEtkinlik() {
     }
 
     return (
-        <>
-            <div className='showEtkinlik'>
-                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
-                    <h2 style={{ color: '#336699' }}>Etkinlik Listesi</h2>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '330px' }}>
-                        <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} style={{ border: 0, borderRadius: '5%' }} />
-                        <input type="date" onChange={(e) => setSelectedDate(e.target.value)} style={{ border: 0, borderRadius: '5%' }} />
-                    </div>
-                </div>
-
-
-                {/* Etkinlik Kartları */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-                    {filteredEvents.map(event => (
-                        <div key={event.id} style={{ width: '300px', margin: '16px' }}>
-                            {/* Kart Detayları */}
-                            <Card className="custom-card">
-                                <CardActionArea>
-                                    <Link to={`/etkinlik/${event.id}`} className="custom-link">
-                                        <CardMedia
-                                            component="img"
-                                            height="200"
-                                            src={event.etkinlikResimleri[0].resimAd}
-                                            title={event.aciklama}
-                                            className="custom-card-media"
-                                        />
-                                    </Link>
-                                    <CardContent>
-                                        <Typography variant="h6" gutterBottom className="custom-card-title">
-                                            {event.ad}
-                                        </Typography>
-                                        <Typography onClick={() => konumaGoreListe(event.konumAdi)} variant="body2" color="textSecondary" className="custom-location-text">
-                                            Konum: {event.konumAdi}
-                                        </Typography>
-                                        <Typography variant="body2" color="textSecondary" className="custom-type-text">
-                                            Tür: {event.etkinlikType}
-                                        </Typography>
-                                        <Typography variant="body2" color="textSecondary" className="custom-date-time-text">
-                                            Başlangıç: {moment(event.etkinlikBaslangic).format('DD/MM/YYYY HH:mm')}
-                                        </Typography>
-                                        <Typography variant="body2" color="textSecondary" className="custom-date-time-text">
-                                            Bitiş: {moment(event.etkinlikBitis).format('DD/MM/YYYY HH:mm')}
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <div className="custom-icon-container">
-                                    <IconButton aria-label="add to favorites" onClick={() => handleFavoriteClick(event.id)}>
-                                        <FavoriteIcon color={favoriteEvents.some((favEvent) => favEvent.id === event.id) ? 'secondary' : 'default'} />
-                                    </IconButton>
-                                    <IconButton aria-label="share">
-                                        <ShareIcon />
-                                    </IconButton>
-                                </div>
-                            </Card>;
-                        </div>
-                    ))}
-                </div>
+             <>
+    <div className='showEtkinlik'>
+        <div className="etkinlik-header">
+            <h2>Etkinlik Listesi</h2>
+            <div className="search-date-container">
+                <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} />
+                <input type="date" onChange={(e) => setSelectedDate(e.target.value)} />
             </div>
+        </div>
+
+        {/* Etkinlik Kartları */}
+        <div className="etkinlik-card-container">
+            {filteredEvents.map(event => (
+                <div key={event.id} className="etkinlik-card">
+                    {/* Kart Detayları */}
+                    <Card className="custom-card">
+                        <CardActionArea>
+                            <Link to={`/etkinlik/${event.id}`} className="custom-link">
+                                <CardMedia
+                                    component="img"
+                                    src={event.etkinlikResimleri[0].resimAd}
+                                    title={event.aciklama}
+                                    className="custom-card-media"
+                                />
+                            </Link>
+                            <CardContent>
+                                <Typography variant="h6" gutterBottom className="custom-card-title">
+                                    {event.ad}
+                                </Typography>
+                                <Typography onClick={() => konumaGoreListe(event.konumAdi)} variant="body2" color="textSecondary" className="custom-location-text">
+                                    Konum: {event.konumAdi}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" className="custom-type-text">
+                                    Tür: {event.etkinlikType}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" className="custom-date-time-text">
+                                    Başlangıç: {moment(event.etkinlikBaslangic).format('DD/MM/YYYY HH:mm')}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" className="custom-date-time-text">
+                                    Bitiş: {moment(event.etkinlikBitis).format('DD/MM/YYYY HH:mm')}
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <div className="custom-icon-container">
+                            <IconButton aria-label="add to favorites" onClick={() => handleFavoriteClick(event.id)}>
+                                <FavoriteIcon color={favoriteEvents.some((favEvent) => favEvent.id === event.id) ? 'secondary' : 'default'} />
+                            </IconButton>
+                            <IconButton aria-label="share">
+                                <ShareIcon />
+                            </IconButton>
+                        </div>
+                    </Card>
+                </div>
+            ))}
+        </div>
+    </div>
+
         </>
     );
 }
