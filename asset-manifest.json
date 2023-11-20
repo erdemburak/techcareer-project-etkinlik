@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/techcareer-project-etkinlik/static/css/main.850eea17.css",
+    "main.js": "/techcareer-project-etkinlik/static/js/main.8df1f32e.js",
+    "index.html": "/techcareer-project-etkinlik/index.html",
+    "main.850eea17.css.map": "/techcareer-project-etkinlik/static/css/main.850eea17.css.map",
+    "main.8df1f32e.js.map": "/techcareer-project-etkinlik/static/js/main.8df1f32e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.850eea17.css",
+    "static/js/main.8df1f32e.js"
+  ]
+}
