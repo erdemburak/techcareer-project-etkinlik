@@ -8,7 +8,7 @@ import { autoPlay } from 'react-swipeable-views-utils';
 import { useTheme } from '@emotion/react';
 import moment from 'moment/moment';
 import SocialMediaButtons from './SocialMediaButtons';
-import './Etkinlik.css';  // Yeni eklediğimiz stil dosyasını import ettik
+import './Etkinlik.css'; 
 import Footer from './Footer';
 import SharePopup from './SharePopup';
 

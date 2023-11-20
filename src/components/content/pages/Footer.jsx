@@ -18,9 +18,9 @@ function Footer() {
                     <i className="fas fa-envelope"></i> &nbsp; burakerdem6@hotmail.com
                 </div>
                 <div>
-                    <h4>Mustafa Sarıtaş</h4>
-                    <i className="fas fa-phone"></i> &nbsp; <br />
-                    <i className="fas fa-envelope"></i> &nbsp;
+                    <h4>Mustafa Sarıbaş</h4>
+                    <i className="fas fa-phone"></i> &nbsp; 0542 629 2902 <br />
+                    <i className="fas fa-envelope"></i> &nbsp; mustafasrbs1@gmail.com
                 </div>
             </div>
         </div>
