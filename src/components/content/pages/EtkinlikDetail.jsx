@@ -84,11 +84,12 @@ function EtkinlikDetail() {
               image={images[0].imgPath}
             />
 
-            <div className="flex-container">
+            <div style={{ display: 'flex' }}>
               <div className="price-image">
                 <img
                   src="https://ckm.kadikoy.bel.tr/Uploads/Image/images/b_salon_oturma.jpg"
                   alt="price"
+                  style={{ width: '150px', height: '150px' }}
                 />
               </div>
               <table className="w3-table w3-striped w3-bordered w3-hoverable">

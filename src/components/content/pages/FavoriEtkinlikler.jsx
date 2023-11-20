@@ -18,7 +18,7 @@ function FavoriEtkinlikler() {
 
     return (<>
         <Navbar />
-        <div style={{ backgroundColor: '#F2F2F2', padding: '20px' }}>
+        <div style={{ backgroundColor: '#F2F2F2', padding: '20px', margin: '5%' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
                 <h2 style={{ color: '#336699' }}>Favori Etkinlikler</h2>
             </div>

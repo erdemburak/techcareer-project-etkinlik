@@ -29,7 +29,7 @@ function EskiEtkinlikler() {
     return (
         <>
             <Navbar />
-            <div style={{ backgroundColor: '#F2F2F2', padding: '20px' }}>
+            <div style={{ backgroundColor: '#F2F2F2', padding: '20px', margin: '5%' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
                     <h2 style={{ color: '#336699' }}>Tarihi Geçmiş Etkinlikler</h2>
                 </div>
@@ -45,10 +45,9 @@ function EskiEtkinlikler() {
                                     <Link to={`/etkinlik/${event.id}`} style={{ textDecoration: 'none' }}>
                                         <CardMedia
                                             component="img"
-                                            height="200"
                                             src={event.etkinlikResimleri[0].resimAd}
                                             title={event.aciklama}
-                                            style={{ borderRadius: "4%" }}
+                                            className='custom-card-media'
                                         />
                                     </Link>
                                     <CardContent>

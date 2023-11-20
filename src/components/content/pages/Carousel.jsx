@@ -31,7 +31,7 @@ function Carousel() {
   };
 
   return (<>
-    <Box sx={{ width: '100%', objectFit: 'cover', flexGrow: 1, height: '300px' }}>
+    <Box sx={{ width: '100%', objectFit: 'cover', flexGrow: 1 }}>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -51,7 +51,7 @@ function Carousel() {
         ))}
       </AutoPlaySwipeableViews>
     </Box>
-  
+
   </>)
 }
 
