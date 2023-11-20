@@ -15,14 +15,13 @@ function Navbar() {
         setAnchorElNav(null);
     };
 
-
     return (
         <>
-            <AppBar position="static" style={{ backgroundColor: '#C3C3C3' }}>
+            <AppBar position="static" style={{ backgroundColor: '#3498db', boxShadow: 'none' }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <AdbIcon sx={{ mr: 1 }} />
+                            <AdbIcon sx={{ mr: 1, fontSize: '2rem' }} />
                             <Typography
                                 variant="h6"
                                 noWrap
@@ -32,8 +31,8 @@ function Navbar() {
                                     mr: 2,
                                     fontFamily: 'monospace',
                                     fontWeight: 700,
-                                    letterSpacing: '.3rem',
-                                    color: 'inherit',
+                                    letterSpacing: '.2rem',
+                                    color: 'white',
                                     textDecoration: 'none',
                                 }}
                             >
@@ -44,13 +43,13 @@ function Navbar() {
                         <Box sx={{ flexGrow: 1 }} />
 
                         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                            <Button key='Etkinlikler' component={Link} to={`/`} sx={{ my: 2, color: 'white', display: 'block' }} >
+                            <Button key='Etkinlikler' component={Link} to={`/`} sx={{ my: 2, color: 'white', textTransform: 'uppercase' }} >
                                 Etkinlikler
                             </Button>
-                            <Button key='EskiEtkinlikler' component={Link} to={`/eskiEtkinlikler`} sx={{ my: 2, color: 'white', display: 'block' }} >
+                            <Button key='EskiEtkinlikler' component={Link} to={`/eskiEtkinlikler`} sx={{ my: 2, color: 'white', textTransform: 'uppercase' }} >
                                 Geçmiş Etkinlikler
                             </Button>
-                            <Button key='Favoriler' component={Link} to={`/favoriEtkinlikler`} sx={{ my: 2, color: 'white', display: 'block' }} >
+                            <Button key='Favoriler' component={Link} to={`/favoriEtkinlikler`} sx={{ my: 2, color: 'white', textTransform: 'uppercase' }} >
                                 Favoriler
                             </Button>
                         </Box>
@@ -58,7 +57,7 @@ function Navbar() {
                         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
                                 size="large"
-                                aria-label="account of current user"
+                                aria-label="menu"
                                 aria-controls="menu-appbar"
                                 aria-haspopup="true"
                                 onClick={handleOpenNavMenu}
@@ -85,13 +84,13 @@ function Navbar() {
                                 }}
                             >
                                 <MenuItem key='Etkinlikler' onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center" component={Link} to={`/`}>Etkinlikler</Typography>
+                                    <Typography textAlign="center" component={Link} to={`/`} sx={{ textTransform: 'uppercase', color: '#3498db' }}>Etkinlikler</Typography>
                                 </MenuItem>
                                 <MenuItem key='EskiEtkinlikler' onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center" component={Link} to={`/eskiEtkinlikler`}>Geçmiş Etkinlikler</Typography>
+                                    <Typography textAlign="center" component={Link} to={`/eskiEtkinlikler`} sx={{ textTransform: 'uppercase', color: '#3498db' }}>Geçmiş Etkinlikler</Typography>
                                 </MenuItem>
                                 <MenuItem key='Favoriler' onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center" component={Link} to={`/favoriEtkinlikler`}>Favoriler</Typography>
+                                    <Typography textAlign="center" component={Link} to={`/favoriEtkinlikler`} sx={{ textTransform: 'uppercase', color: '#3498db' }}>Favoriler</Typography>
                                 </MenuItem>
                             </Menu>
                         </Box>
@@ -101,4 +100,5 @@ function Navbar() {
         </>
     );
 }
+
 export default Navbar;

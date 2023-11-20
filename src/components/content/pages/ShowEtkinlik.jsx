@@ -78,7 +78,7 @@ function ShowEtkinlik() {
                         <input type="date" onChange={(e) => setSelectedDate(e.target.value)} style={{ border: 0, borderRadius: '5%' }} />
                     </div>
                 </div>
-                
+
 
                 {/* Etkinlik Kartları */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>

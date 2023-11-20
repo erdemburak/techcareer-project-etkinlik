@@ -7,7 +7,7 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { useTheme } from '@emotion/react';
 import moment from 'moment/moment';
-import SocialMediaButtons from './SocialMediaButtons' 
+import SocialMediaButtons from './SocialMediaButtons'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -77,12 +77,12 @@ function EtkinlikDetail() {
                     <p>Başlangıç: {moment(etkinlik.etkinlikBaslangic).format('DD/MM/YYYY HH:mm')}</p>
                     <p>Bitiş: {moment(etkinlik.etkinlikBitis).format('DD/MM/YYYY HH:mm')}</p>
                     <SocialMediaButtons
-                    url={`http://localhost:3000/etkinlik/${id}`}
-                    title={etkinlik.aciklama}
-                    description={`Etkinlik: ${etkinlik.aciklama}, Konum: ${etkinlik.konumAdi}`}
-                    image={images[0].imgPath}
+                        url={`http://localhost:3000/etkinlik/${id}`}
+                        title={etkinlik.aciklama}
+                        description={`Etkinlik: ${etkinlik.aciklama}, Konum: ${etkinlik.konumAdi}`}
+                        image={images[0].imgPath}
                     />
-          
+
 
 
                     <div style={{ display: 'flex' }}>
