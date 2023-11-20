@@ -17,10 +17,10 @@ function Navbar() {
 
     return (
         <>
-            <AppBar position="static" style={{ backgroundColor: '#3498db', boxShadow: 'none' }}>
+            <AppBar position="fixed" style={{ backgroundColor: '#3498db', boxShadow: 'none' }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center'}}>
                             <AdbIcon sx={{ mr: 1, fontSize: '2rem' }} />
                             <Typography
                                 variant="h6"
