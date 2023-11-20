@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { addFavoriteEvent, removeFavoriteEvent } from '../favorite/favoriteEventsSlice'
 import { useDispatch, useSelector } from 'react-redux';
+import { FacebookShareButton, TwitterShareButton } from 'react-share';
+import SharePopup from './SharePopup';
 
 function ShowEtkinlik() {
     const [events, setEvents] = useState([]);
@@ -112,13 +114,13 @@ function ShowEtkinlik() {
                                         </Typography>
                                     </CardContent>
                                 </CardActionArea>
-                                <div className="custom-icon-container">
+                                <div className="custom-icon-container" style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <IconButton aria-label="add to favorites" onClick={() => handleFavoriteClick(event.id)}>
                                         <FavoriteIcon color={favoriteEvents.some((favEvent) => favEvent.id === event.id) ? 'secondary' : 'default'} />
                                     </IconButton>
-                                    <IconButton aria-label="share">
-                                        <ShareIcon />
-                                    </IconButton>
+                                    <div className="share-icons">
+                                        <SharePopup event={event} />
+                                    </div>
                                 </div>
                             </Card>
                         </div>
