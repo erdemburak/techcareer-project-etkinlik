@@ -9,6 +9,8 @@ import { useTheme } from '@emotion/react';
 import moment from 'moment/moment';
 import SocialMediaButtons from './SocialMediaButtons';
 import './Etkinlik.css';  // Yeni eklediğimiz stil dosyasını import ettik
+import Footer from './Footer';
+import SharePopup from './SharePopup';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -77,12 +79,9 @@ function EtkinlikDetail() {
             <p>Başlangıç: {moment(etkinlik.etkinlikBaslangic).format('DD/MM/YYYY HH:mm')}</p>
             <p>Bitiş: {moment(etkinlik.etkinlikBitis).format('DD/MM/YYYY HH:mm')}</p>
 
-            <SocialMediaButtons
-              url={`http://localhost:3000/etkinlik/${id}`}
-              title={etkinlik.aciklama}
-              description={`Etkinlik: ${etkinlik.aciklama}, Konum: ${etkinlik.konumAdi}`}
-              image={images[0].imgPath}
-            />
+            <div className="share-icons">
+              <SharePopup event={etkinlik} />
+            </div>
 
             <div style={{ display: 'flex' }}>
               <div className="price-image">
@@ -104,7 +103,7 @@ function EtkinlikDetail() {
                     etkinlik.etkinlikUcretleri.map((item, index) => (
                       <tr key={item.id}>
                         <td>Kategori {index + 1}</td>
-                        <td>{item.fiyat}</td>
+                        <td>{item.fiyat} ₺</td>
                       </tr>
                     ))}
                 </tbody>
@@ -118,6 +117,7 @@ function EtkinlikDetail() {
         <hr />
         <div>Map</div>
       </div>
+      <Footer />
     </>
   );
 }

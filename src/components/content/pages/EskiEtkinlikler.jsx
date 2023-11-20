@@ -5,6 +5,7 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/m
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Navbar from '../navbar/Navbar';
+import Footer from './Footer';
 
 function EskiEtkinlikler() {
     const [events, setEvents] = useState([]);
@@ -29,7 +30,7 @@ function EskiEtkinlikler() {
     return (
         <>
             <Navbar />
-            <div style={{ backgroundColor: '#F2F2F2', padding: '20px', margin: '5%' }}>
+            <div style={{ backgroundColor: '#F2F2F2', padding: '20px', margin: '5%', minHeight: '55vh' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
                     <h2 style={{ color: '#336699' }}>Tarihi Geçmiş Etkinlikler</h2>
                 </div>
@@ -73,6 +74,7 @@ function EskiEtkinlikler() {
                     ))}
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
