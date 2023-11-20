@@ -27,7 +27,7 @@ function CreateEtkinlik() {
         },
         onSubmit: (values) => {
 
-            axios.post('http://51.20.118.182/api/v1/etkinlik/create', values)
+            axios.post('http://51.20.142.51/api/v1/etkinlik/create', values)
                 .then(res => {
                     console.log('Success!');
                 })

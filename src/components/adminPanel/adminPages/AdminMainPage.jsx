@@ -14,7 +14,7 @@ function AdminMainPage() {
     }, [])
 
     const loadEtkinlik = () => {
-        axios.get(`http://51.20.118.182/api/v1/etkinlik/list`)
+        axios.get(`http://51.20.142.51/api/v1/etkinlik/list`)
             .then((response) => {
                 setetkinliklist(response.data);
             })

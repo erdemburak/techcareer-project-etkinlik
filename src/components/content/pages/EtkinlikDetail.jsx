@@ -26,7 +26,7 @@ function EtkinlikDetail() {
 
   useEffect(() => {
     axios
-      .get(`http://51.20.118.182/api/v1/etkinlik/find/${id}`)
+      .get(`http://51.20.142.51/api/v1/etkinlik/find/${id}`)
       .then((response) => {
         setEtkinlik(response.data);
       })

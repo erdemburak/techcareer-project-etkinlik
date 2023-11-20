@@ -11,7 +11,7 @@ function EskiEtkinlikler() {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        axios.get('http://51.20.118.182/api/v1/etkinlik/list')
+        axios.get('http://51.20.142.51/api/v1/etkinlik/list')
             .then((response) => {
                 setEvents(response.data);
             })

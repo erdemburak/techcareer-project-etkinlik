@@ -39,7 +39,7 @@ const UpdateEtkinlik = ({ eventId }) => {
             ],
         },
         onSubmit: (values) => {
-            axios.put(`http://51.20.118.182/api/v1/etkinlik/update/${eventId}`, values)
+            axios.put(`http://51.20.142.51/api/v1/etkinlik/update/${eventId}`, values)
                 .then((res) => {
                     console.log('Update Success!');
                 })
