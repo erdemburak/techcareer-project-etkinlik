@@ -1,8 +1,8 @@
 import '../js/scripts.js'
 import '../css/styles.css'
+import './admin.css'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Button } from '@mui/material';
 import AdminSideBar from './AdminSideBar';
 
 function AdminMainPage() {
@@ -43,13 +43,13 @@ function AdminMainPage() {
 
             <AdminSideBar />
 
-            <div style={{ margin: '4%' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ margin: '4%', backgroundColor: '#DED2D2', padding: '20px 50px', width: '90%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '98%' }}>
                     <h2>Etkinlikler</h2>
-                    <Button onClick={() => loadEtkinlik()}>Listeyi Güncelle</Button>
+                    <button onClick={() => loadEtkinlik()} className='admin-button'>Listeyi Güncelle</button>
                 </div>
 
-                <table className='w3-table w3-striped w3-bordered w3-hoverable' style={{ maxWidth: 1100 }}>
+                <table className='w3-table w3-striped w3-bordered w3-hoverable' style={{ width: '95%' }}>
                     <thead>
                         <tr>
                             <th>Etkinlik Adı</th>
@@ -75,7 +75,7 @@ function AdminMainPage() {
                             <Link to='/admin/update' className="button">Update</Link>
                         </td> */}
                                 <td>
-                                    <button onClick={() => deleteEtkinlik(event.id)}>Delete</button>
+                                    <button onClick={() => deleteEtkinlik(event.id)} className='admin-button'>Delete</button>
                                 </td>
                             </tr>
                         ))}
