@@ -1,0 +1,25 @@
+.sidebar-button {
+    background-color: rgba(26, 58, 65, 0.7);
+    color: #DED2D2;
+}
+
+.sidebar-button:hover {
+    background-color: #DED2D2;
+    color: #1a3a41;
+}
+
+
+.admin-button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    color: #DED2D2;
+    background-color: rgba(31, 32, 26, 0.7);
+    transition: background-color 0.3s ease;
+}
+
+.admin-button:hover {
+    background-color: rgba(31, 32, 26, 0.5);
+    text-decoration: none;
+}
