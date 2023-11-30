@@ -7,7 +7,6 @@ import ShareIcon from '@mui/icons-material/Share';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import moment from 'moment';
 
 function SharePopup({ event }) {
@@ -56,7 +55,8 @@ function SharePopup({ event }) {
                         transform: 'translate(-50%, -50%)',
                         width: 250,
                         bgcolor: 'background.paper',
-                        border: '2px solid #000',
+                        border: '1px solid #000',
+                        borderRadius: '5px',
                         boxShadow: 24,
                         p: 2,
                     }}

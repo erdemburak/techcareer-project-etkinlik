@@ -1,0 +1,110 @@
+.active {
+    background-color: rgba(31, 32, 26, 0.8);
+    color: #a0632e;
+}
+
+.blog-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 88%;
+    height: 60px;
+}
+
+ul {
+    list-style-type: none;
+    /*  Madde noktalarını kaldırır  */
+}
+
+ul a {
+    color: #DED2D2;
+}
+
+.no-underline {
+    text-decoration: none;
+    color: #DED2D2;
+}
+
+.no-underline:hover {
+    text-decoration: none;
+    color: #a0632e;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-button {
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-button:hover {
+    background-color: rgba(31, 32, 26, 0.5);
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-button:active {
+    transform: scale(0.95);
+}
+
+.navbar-button:focus {
+    outline: none;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.navbar-links.active {
+    background-color: rgba(27, 28, 32, 0);
+}
+
+.menu-toggle span {
+    background-color: DED2D2;
+    height: 3px;
+    width: 25px;
+    margin: 5px;
+    display: block;
+    transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-links.active {
+        background-color: rgba(27, 28, 32, 0.9);
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        z-index: 9999;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .blog-navbar {
+        margin-top: 1%;
+    }
+}

@@ -3,12 +3,10 @@ import axios from 'axios';
 import './Etkinlik.css';
 import { Card, CardActionArea, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { addFavoriteEvent, removeFavoriteEvent } from '../favorite/favoriteEventsSlice'
 import { useDispatch, useSelector } from 'react-redux';
-import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import SharePopup from './SharePopup';
 
 function ShowEtkinlik() {
@@ -19,6 +17,10 @@ function ShowEtkinlik() {
     const favoriteEvents = useSelector(state => state.favoriteEvents);
 
     useEffect(() => {
+        loadEvents();
+    }, []);
+
+    const loadEvents = () => {
         axios.get('http://51.20.142.51/api/v1/etkinlik/list')
             .then((response) => {
                 setEvents(response.data);
@@ -26,7 +28,7 @@ function ShowEtkinlik() {
             .catch((error) => {
                 console.error('Veri çekme hatası:', error);
             });
-    }, []);
+    }
 
     const handleFavoriteClick = (eventId) => {
         // Check if the event is already in favorites
@@ -76,8 +78,8 @@ function ShowEtkinlik() {
                 <div className="etkinlik-header">
                     <h2>Etkinlik Listesi</h2>
                     <div className="search-date-container">
-                        <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} />
-                        <input type="date" onChange={(e) => setSelectedDate(e.target.value)} />
+                        <input type="text" placeholder="Etkinlik veya Grup Ara" onChange={(e) => setSearchTerm(e.target.value)} style={{ backgroundColor: '#DED2D2' }} />
+                        <input type="date" onChange={(e) => setSelectedDate(e.target.value)} style={{ backgroundColor: '#DED2D2' }} />
                     </div>
                 </div>
 
@@ -86,7 +88,7 @@ function ShowEtkinlik() {
                     {filteredEvents.map(event => (
                         <div key={event.id} className="etkinlik-card">
                             {/* Kart Detayları */}
-                            <Card className="custom-card">
+                            <Card style={{ backgroundColor: '#DED2D2', borderRadius: '10px', boxShadow: '0 0 10px #000' }}>
                                 <CardActionArea>
                                     <Link to={`/etkinlik/${event.id}`} className="custom-link">
                                         <CardMedia
@@ -96,7 +98,7 @@ function ShowEtkinlik() {
                                             className="custom-card-media"
                                         />
                                     </Link>
-                                    <CardContent>
+                                    <CardContent style={{ height: '173px' }}>
                                         <Typography variant="h6" gutterBottom className="custom-card-title">
                                             {event.ad}
                                         </Typography>
@@ -114,7 +116,7 @@ function ShowEtkinlik() {
                                         </Typography>
                                     </CardContent>
                                 </CardActionArea>
-                                <div className="custom-icon-container" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <div className="custom-icon-container" style={{ display: 'flex', justifyContent: 'space-between', padding: '0 5px' }}>
                                     <IconButton aria-label="add to favorites" onClick={() => handleFavoriteClick(event.id)}>
                                         <FavoriteIcon color={favoriteEvents.some((favEvent) => favEvent.id === event.id) ? 'secondary' : 'default'} />
                                     </IconButton>

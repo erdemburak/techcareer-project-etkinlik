@@ -80,7 +80,7 @@ function CreateEtkinlik() {
 
             <AdminSideBar />
 
-            <div style={{ margin: '4%' }}>
+            <div style={{ margin: '4%', backgroundColor: '#DED2D2', padding: '20px 50px' }}>
                 <div>
                     <h2>Etkinlik Oluştur</h2>
                 </div>

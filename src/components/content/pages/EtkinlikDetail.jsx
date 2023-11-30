@@ -7,7 +7,6 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { useTheme } from '@emotion/react';
 import moment from 'moment/moment';
-import SocialMediaButtons from './SocialMediaButtons';
 import './Etkinlik.css';  // Yeni eklediğimiz stil dosyasını import ettik
 import Footer from './Footer';
 import SharePopup from './SharePopup';
@@ -48,7 +47,12 @@ function EtkinlikDetail() {
     <>
       <Navbar />
       <div className="etkinlik-detail-container">
-        <h2>Etkinlik Detayları</h2>
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0 20px' }}>
+          <h2>Etkinlik Detayları</h2>
+          <div className="share-icons">
+            <SharePopup event={etkinlik} />
+          </div>
+        </div>
         <hr />
 
         <div className="flex-container">
@@ -73,25 +77,16 @@ function EtkinlikDetail() {
 
           <div className="info-container">
             <h2>{etkinlik.ad}</h2>
-            <p>Konum: {etkinlik.konumAdi}</p>
+            <p style={{ fontSize: '18px' }}>{etkinlik.konumAdi}</p>
             <p>Adres: {etkinlik.adres}</p>
-            <p>Tür: {etkinlik.etkinlikType}</p>
+            <p>{etkinlik.etkinlikType}</p>
             <p>Başlangıç: {moment(etkinlik.etkinlikBaslangic).format('DD/MM/YYYY HH:mm')}</p>
             <p>Bitiş: {moment(etkinlik.etkinlikBitis).format('DD/MM/YYYY HH:mm')}</p>
 
-            <div className="share-icons">
-              <SharePopup event={etkinlik} />
-            </div>
 
-            <div style={{ display: 'flex' }}>
-              <div className="price-image">
-                <img
-                  src="https://ckm.kadikoy.bel.tr/Uploads/Image/images/b_salon_oturma.jpg"
-                  alt="price"
-                  style={{ width: '150px', height: '150px' }}
-                />
-              </div>
-              <table className="w3-table w3-striped w3-bordered w3-hoverable">
+
+            <div style={{ display: 'flex', width: '300px' }}>
+              <table className="w3-table  w3-bordered w3-hoverable" style={{ border: '1px solid', padding: '10px' }}>
                 <thead>
                   <tr>
                     <th>Kategori</th>
@@ -113,9 +108,12 @@ function EtkinlikDetail() {
         </div>
 
         <hr />
-        <div>Açıklama: {etkinlik.aciklama}</div>
+        <div style={{ padding: '10px' }}>
+          <span style={{ fontSize: '20px' }}>Etkinlik Detayı</span>
+          <p>{etkinlik.aciklama}</p>
+        </div>
         <hr />
-        <div>Map</div>
+        <div style={{ padding: '10px' }}>Map</div>
       </div>
       <Footer />
     </>

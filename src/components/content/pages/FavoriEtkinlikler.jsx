@@ -19,16 +19,16 @@ function FavoriEtkinlikler() {
 
     return (<>
         <Navbar />
-        <div style={{ backgroundColor: '#F2F2F2', padding: '20px', margin: '5%', minHeight: '55vh' }}>
+        <div style={{ backgroundColor: 'rgba(242, 242, 242, 0.5)', padding: '20px', margin: '5%', minHeight: '55vh', borderRadius: '10px', boxShadow: '0 0 10px #000' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', paddingLeft: '3%', paddingRight: '3%' }}>
-                <h2 style={{ color: '#336699' }}>Favori Etkinlikler</h2>
+                <h2 style={{ color: '#fff' }}>Favori Etkinlikler</h2>
             </div>
             <hr />
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
                 {favoriteEvents.map(event => (
                     <div key={event.id} style={{ width: '300px', margin: '16px' }}>
                         {/* Kart Detayları */}
-                        <Card style={{ backgroundColor: 'white' }}>
+                        <Card style={{ backgroundColor: '#DED2D2', borderRadius: '10px', boxShadow: '0 0 10px #fff' }}>
                             <CardActionArea>
                                 <Link to={`/etkinlik/${event.id}`} style={{ textDecoration: 'none' }}>
                                     <CardMedia
@@ -38,7 +38,7 @@ function FavoriEtkinlikler() {
                                         title={event.aciklama}
                                         style={{ borderRadius: "4%" }}
                                     /> </Link>
-                                <CardContent>
+                                <CardContent style={{ height: '173px' }}>
                                     <Typography variant="h6" gutterBottom>
                                         {event.ad}
                                     </Typography>
@@ -68,7 +68,7 @@ function FavoriEtkinlikler() {
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
         <Footer />
     </>);
 }

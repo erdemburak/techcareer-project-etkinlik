@@ -8,24 +8,23 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
-  background-color: #F2F2F2;
+  min-height: 90vh;
 }
 
-.showEtkinlik .etkinlik-header {
+.etkinlik-header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding-left: 3%;
   padding-right: 3%;
-
 }
 
 .showEtkinlik h2 {
-  color: #336699;
+  color: #DED2D2;
   text-align: center;
 }
 
-.showEtkinlik .search-date-container {
+.search-date-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -44,11 +43,6 @@
   justify-content: center;
 }
 
-.showEtkinlik .etkinlik-card {
-  width: 300px;
-  margin: 16px;
-}
-
 .etkinlik-card {
   width: 300px;
   margin: 16px;
@@ -58,7 +52,6 @@
   height: 200px;
   border-radius: 4%;
 }
-
 
 /*        Carousel      */
 .carousel-container {
@@ -120,9 +113,11 @@
 /* EtkinlikDetail  */
 
 .etkinlik-detail-container {
-  background-color: #F2F2F2;
+  background-color: #DED2D2;
   padding: 20px;
-  margin: 5%;
+  margin: 5% 10%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000;
 }
 
 .etkinlik-detail-container h2 {
@@ -139,13 +134,10 @@ hr {
 
 .flex-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
+  gap: 100px;
   margin-left: 60px;
   margin-right: 60px;
-}
-
-.image-container {
-  width: 50%;
 }
 
 .image {
@@ -153,9 +145,6 @@ hr {
   height: 100%;
 }
 
-.info-container {
-  width: 50%;
-}
 
 .info-container p {
   margin-bottom: 10px;
