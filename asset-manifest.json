@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/techcareer-project-etkinlik/static/css/main.7c292795.css",
-    "main.js": "/techcareer-project-etkinlik/static/js/main.62111e9d.js",
+    "main.js": "/techcareer-project-etkinlik/static/js/main.cee98c7b.js",
     "index.html": "/techcareer-project-etkinlik/index.html",
     "main.7c292795.css.map": "/techcareer-project-etkinlik/static/css/main.7c292795.css.map",
-    "main.62111e9d.js.map": "/techcareer-project-etkinlik/static/js/main.62111e9d.js.map"
+    "main.cee98c7b.js.map": "/techcareer-project-etkinlik/static/js/main.cee98c7b.js.map"
   },
   "entrypoints": [
     "static/css/main.7c292795.css",
-    "static/js/main.62111e9d.js"
+    "static/js/main.cee98c7b.js"
   ]
 }
